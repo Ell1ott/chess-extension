@@ -17,3 +17,5 @@ git clone https://github.com/your-username/chess-extension.git
 4. **Load the Extension**: Once developer mode is enabled, you will notice new options. Click on the "Load unpacked" button. A file dialog will appear.
 
 5. **Select the Repository Folder**: Navigate to the directory where you cloned the repository in step 1. Select the repository folder and confirm your selection.
+
+Please note that while in beta, the extension might undergo further improvements and changes. Feel free to contribute, report issues, or provide feedback to help us enhance your chess.stjo.dev experience even more. Thank you for being a part of the Chess-Extension community!
