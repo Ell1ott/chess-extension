@@ -6,9 +6,6 @@ console.log("chess.stjo.dev/api/bot/" + u + "/");
 fetch("https://chess.stjo.dev/api/bot/" + u + "/")
   .then((res) => res.json())
   .then((r) => {
-    console.log(r);
-    console.log("hii!");
-
     const name = r.name;
 
     const games = r.games;
