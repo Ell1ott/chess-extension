@@ -19,3 +19,8 @@ git clone https://github.com/your-username/chess-extension.git
 5. **Select the Repository Folder**: Navigate to the directory where you cloned the repository in step 1. Select the repository folder and confirm your selection.
 
 Please note that while in beta, the extension might undergo further improvements and changes. Feel free to contribute, report issues, or provide feedback to help us enhance your chess.stjo.dev experience even more. Thank you for being a part of the Chess-Extension community!
+
+## Screenshots
+
+![image](https://github.com/Ell1ott/chess-extension/assets/85990359/926834ca-8782-48b0-8190-ea51be324440)
+
