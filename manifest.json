@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "chess stats",
+  "version": "1.0",
+  "description": "Adds extra statistics panel to chess.stjo.dev's bots",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://chess.stjo.dev/bot*"],
+      "js": ["jquery.com_jquery-3.7.0.min.js", "content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
