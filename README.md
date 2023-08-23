@@ -1,6 +1,6 @@
 # Chess-Extension
 
-The Chess-Extension enhances your experience on the [chess.stjo.dev](https://chess.stjo.dev) website by introducing a dedicated statistics panel right in your Chrome browser.
+Chess-Extension enhances your experience on the [chess.stjo.dev](https://chess.stjo.dev) website by introducing a dedicated statistics panel right in your Chrome browser.
 
 ## Installation
 
