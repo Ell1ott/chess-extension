@@ -3,6 +3,10 @@
 Chess-Extension enhances your experience on the [chess.stjo.dev](https://chess.stjo.dev) website by introducing a dedicated statistics panel right in your Chrome browser.
 
 ## Installation
+
+### Firefox
+[![Add to Firefox](add-to-firefox.svg)](https://github.com/Ell1ott/chess-extension/releases/download/beta/chess-extension-1.0.xpi)
+
 ### Chrome
 1. **Clone the Repository**: Begin by cloning this repository to your local machine. You can do this by executing the following command in your terminal:
 
