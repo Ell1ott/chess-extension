@@ -1,0 +1,16 @@
+#stats-panel {
+  align-items: center;
+  margin: 20px 20px 20px 0px;
+  background-color: rgb(246, 234, 224);
+  padding: 8px;
+  border-radius: 8px;
+  color: rgb(122, 78, 60);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: flex;
+}
+
+.counter {
+  text-align: center;
+  font-size: 25px;
+  margin: 0;
+}
