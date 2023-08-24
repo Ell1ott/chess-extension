@@ -6,14 +6,8 @@ Chess-Extension enhances your experience on the [chess.stjo.dev](https://chess.s
 
 ### Firefox
 
-<a href="https://github.com/Ell1ott/chess-extension/releases/download/beta/chess-extension-1.0.xpi">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="/firefox-light.svg">
-    <source media="(prefers-color-scheme: light)" srcset="/firefox-dark.svg">
-    <img alt="Add to Firefox." src="/firefox-dark.svg">
-    <a src="https://github.com/Ell1ott/chess-extension/releases/download/beta/chess-extension-1.0.xpi" />
-  </picture>
-</a>
+[![Add to Firefox](firefox-light.svg#gh-dark-mode-only)](https://github.com/Ell1ott/chess-extension/releases/download/beta/chess-extension-1.0.xpi)
+[![Add to Firefox](firefox-dark.svg#gh-light-mode-only)](https://github.com/Ell1ott/chess-extension/releases/download/beta/chess-extension-1.0.xpi)
 
 ### Chrome
 
