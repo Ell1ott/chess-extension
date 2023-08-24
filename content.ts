@@ -18,23 +18,39 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
 
     const games = r.games;
 
+    const exportArray = new Array(games.length);
+
     var wins = 0;
     var losses = 0;
     var draws = 0;
     var winEloEffect = 0;
     var loseEloEffect = 0;
     var drawEloEffect = 0;
-    games.forEach((game) => {
+    games.forEach((game, index) => {
+      var ending = 0;
       if (game.winner == "d") {
         draws++;
         drawEloEffect += game.elo_change;
       } else if (game[game.winner + "name"] == name) {
         wins++;
         winEloEffect += game.elo_change;
+        ending = 1;
       } else {
         losses++;
         loseEloEffect += game.elo_change;
+        ending = -1;
       }
+
+      exportArray[index] = [
+        game.wname,
+        game.bname,
+        game.reason,
+        game.started,
+        game.elo_change,
+        ending,
+      ];
+
+      console.log(game.elo_change);
     });
 
     console.log(`${wins} wins ${losses} losses ${draws} draws`);
@@ -120,9 +136,31 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     </div>
   </div>
 
-    `;
-
+  `;
     newParentElement.appendChild(statElem);
+    let csvContent = "data:text/csv;charset=utf-8;\nsep=,\n";
+    exportArray.forEach(function (rowArray) {
+      // console.log(rowArray);
+      let row = rowArray.join(",");
+      csvContent += row + "\r\n";
+    });
+
+    // console.log(csvContent);
+
+    var encodedUri = encodeURI(csvContent);
+
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.id = "download-link";
+    link.innerHTML = "download csv file";
+    link.setAttribute("download", name + ".csv");
+    const popup = document.getElementById("stat-popup"); // Required for FF
+    if (!popup) {
+      console.log("no popup");
+      return;
+    }
+    popup.appendChild(link);
+    // link.click(); // This will download the data file named "my_data.csv".
 
     const statPopup = document.getElementById("bgdarkener");
 
