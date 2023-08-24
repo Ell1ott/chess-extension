@@ -5,12 +5,15 @@ Chess-Extension enhances your experience on the [chess.stjo.dev](https://chess.s
 ## Installation
 
 ### Firefox
-[![Add to Firefox](add-to-firefox.svg)](https://github.com/Ell1ott/chess-extension/releases/download/beta/chess-extension-1.0.xpi)
+
+[![Add to Firefox](firefox-dark.svg)](https://github.com/Ell1ott/chess-extension/releases/download/beta/chess-extension-1.0.xpi#gh-dark-mode-only)
+[![Add to Firefox](firefox-light.svg)](https://github.com/Ell1ott/chess-extension/releases/download/beta/chess-extension-1.0.xpi#gh-light-mode-only)
 
 ### Chrome
+
 1. **Clone the Repository**: Begin by cloning this repository to your local machine. You can do this by executing the following command in your terminal:
 
-```
+```bash
 git clone https://github.com/Ell1ott/chess-extension.git
 ```
 
@@ -27,4 +30,3 @@ Please note that while in beta, the extension might undergo further improvements
 ## Screenshots
 
 ![image](https://github.com/Ell1ott/chess-extension/assets/85990359/926834ca-8782-48b0-8190-ea51be324440)
-
