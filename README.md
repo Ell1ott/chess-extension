@@ -11,7 +11,7 @@ Chess-Extension enhances your experience on the [chess.stjo.dev](https://chess.s
 1. **Clone the Repository**: Begin by cloning this repository to your local machine. You can do this by executing the following command in your terminal:
 
 ```
-git clone https://github.com/your-username/chess-extension.git
+git clone https://github.com/Ell1ott/chess-extension.git
 ```
 
 2. **Access Chrome Extensions**: Open a new tab in your Chrome browser and navigate to `chrome://extensions/`. Alternatively, you can click on the three vertical dots in the top right corner, select "More tools," and then click on "Extensions."
