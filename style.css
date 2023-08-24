@@ -1,4 +1,4 @@
-#stats-panel {
+#stat-panel {
   align-items: center;
   margin: 20px 20px 20px 0px;
   background-color: rgb(246, 234, 224);
@@ -7,10 +7,110 @@
   color: rgb(122, 78, 60);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .counter {
   text-align: center;
   font-size: 25px;
+}
+
+.m5 {
+  margin: 5px;
+}
+
+#counters {
+  display: flex;
+}
+
+#more-button {
+  /* background-color: #007bff; Button background color */
+  /* position: absolute; */
+  /* right: 4px; */
+
+  bottom: 4px;
   margin: 0;
+  background-color: transparent;
+  border: none; /* Remove the default border */
+  color: rgb(70, 70, 70); /* Text color */
+  /* padding: 10px 20px; Adjust padding as needed */
+  font-size: 15px; /* Font size of the text */
+  cursor: pointer; /* Show pointer cursor on hover */
+  outline: none; /* Remove the outline on focus */
+}
+#close-button {
+  /* background-color: #007bff; Button background color */
+  position: absolute;
+  /* right: 4px; */
+
+  top: 4px;
+  right: 4px;
+  margin: 0;
+  background-color: transparent;
+  border: none; /* Remove the default border */
+  color: rgb(70, 70, 70); /* Text color */
+  /* padding: 10px 20px; Adjust padding as needed */
+  font-size: 15px; /* Font size of the text */
+  cursor: pointer; /* Show pointer cursor on hover */
+  outline: none; /* Remove the outline on focus */
+}
+
+#stat-popup {
+  /* display: flex; */
+  /* height: 100px;
+    width: 100px; */
+  background-color: rgb(246, 234, 224);
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+
+  /* display: none; */
+}
+
+#bgdarkener {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.389);
+
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.small-stat p {
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.elo-effect {
+  font-size: 10px;
+  margin: 3px;
+}
+
+.elo-effect p {
+  margin: 0;
+}
+
+.space-gap {
+  gap: 5px;
 }
