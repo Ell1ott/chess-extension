@@ -29,4 +29,5 @@ Please note that while in beta, the extension might undergo further improvements
 
 ## Screenshots
 
-![image](https://github.com/Ell1ott/chess-extension/assets/85990359/926834ca-8782-48b0-8190-ea51be324440)
+![image](https://github.com/Ell1ott/chess-extension/assets/85990359/1647ec97-c204-471b-b831-69bf9a16c3e3)
+
