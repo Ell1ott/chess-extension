@@ -30,6 +30,14 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     var winEloEffect = 0;
     var loseEloEffect = 0;
     var drawEloEffect = 0;
+
+    var endReasons = {
+      "Threefold Repetition": 0,
+      Checkmate: 0,
+      "timed out": 0,
+      "illegal move": 0,
+      "Insufficient Material": 0,
+    };
     games.forEach((game, index) => {
       var ending = 0;
       if (game.winner == "d") {
@@ -45,6 +53,12 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
         ending = -1;
       }
 
+      for (let reason in endReasons) {
+        if (game.reason.toLowerCase().includes(reason.toLowerCase())) {
+          endReasons[reason] += 1;
+        }
+      }
+
       exportArray[index] = [
         game.wname,
         game.bname,
@@ -58,6 +72,8 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     });
 
     console.log(`${wins} wins ${losses} losses ${draws} draws`);
+
+    console.log(endReasons);
     const gameCount = games.length;
     const winProcent = wins / gameCount;
     const loseProcect = losses / gameCount;
@@ -111,36 +127,11 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
   <div id="bgdarkener">
     <div id="stat-popup">
       <div class="flex">
-        <div class="m5">
-          <h2 class="m5">Wins</h2>
-          <p class="counter m5">${wins}</p>
-          <p class="counter m5"> +53 elo</p>
-          
-        </div>
-        <div class="m5">
-          <h2 class="m5">Losses</h2>
-          <p class="counter m5">${losses}</p>
-          <p class="counter m5"> +53 elo</p>
-          
-        </div>
-        <div class="m5">
-          <h2 class="m5">Draws</h2>
-          <p class="counter m5">${draws}</p>
-          <p class="counter m5"> +53 elo</p>
-        </div>
-      </div>
-      <div class="grid">
-        <div class="flex elo-effect space-gap">
-          <p class="bold">Elo effect by wins:<p>
-          <p>+24</p>
-        </div>
-        <div class="flex elo-effect space-gap">
-          <p class="bold">Elo effect by loses:<p>
-          <p>+24</p>
-        </div>
+        <h2>
+        game ending reasons
+        </h2>
         
-        
-        
+
       </div>
 
       <button id="close-button">x</button>
