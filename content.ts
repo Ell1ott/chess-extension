@@ -4,18 +4,22 @@ console.log(url);
 
 console.log("chess.stjo.dev/api/bot/" + u + "/");
 
-function roundAndFormat(number) {
-  const roundedNumber = Math.round(number);
+function roundAndFormat(number, decimal = 1) {
+  const roundedNumber = round(number, decimal);
   const formattedNumber =
     roundedNumber >= 0 ? `+${roundedNumber}` : `${roundedNumber}`;
   return formattedNumber;
+}
+
+function round(number, decimal) {
+  return Math.round(number * decimal) / decimal;
 }
 
 fetch("https://chess.stjo.dev/api/bot/" + u + "/")
   .then((res) => res.json())
   .then((r) => {
     const name = r.name;
-
+    if (!r || !r.games) return;
     const games = r.games;
 
     const exportArray = new Array(games.length);
@@ -54,6 +58,10 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     });
 
     console.log(`${wins} wins ${losses} losses ${draws} draws`);
+    const gameCount = games.length;
+    const winProcent = wins / gameCount;
+    const loseProcect = losses / gameCount;
+    const drawProcent = draws / gameCount;
 
     // headerElem.style = "display: flex";
 
@@ -81,18 +89,21 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     <h2 class="m5">Wins</h2>
     <p class="counter m5">${wins}</p>
     <p class="counter elo-effect "> ${roundAndFormat(winEloEffect)} elo</p>
+    <p class="counter elo-effect "> ${round(winProcent * 100, 10)}%</p>
     
   </div>
   <div class="m5">
     <h2 class="m5">Losses</h2>
     <p class="counter m5">${losses}</p>
     <p class="counter elo-effect "> ${roundAndFormat(loseEloEffect)} elo</p>
+    <p class="counter elo-effect "> ${round(loseProcect * 100, 10)}%</p>
     
   </div>
   <div class="m5">
     <h2 class="m5">Draws</h2>
     <p class="counter m5">${draws}</p>
     <p class="counter elo-effect"> ${roundAndFormat(drawEloEffect)} elo</p>
+    <p class="counter elo-effect"> ${round(drawProcent * 100, 10)}%</p>
   </div>
 </div>
   </div>
