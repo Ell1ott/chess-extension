@@ -32,14 +32,13 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
           tag-prefix: 'v'
-          pre-release: ${{ inputs.beta }}
           incremented-value: ${{ inputs.version }}
 
       - name: Set version in manifest and readme
         run: |
-          sed -i '0,/\("version" *: *\)"[^"]*"/s//\1"'"${{ steps.semver.outputs.semantic-version }}"'"/' manifest.json
-          sed -E -i "s#(https://github.com/Ell1ott/chess-extension/releases/download/)[^/]*#\1${{ steps.semver.outputs.semantic-version }}#g" README.md
-          sed -E -i "s/(chess-extension-v[^\"]*\.xpi)/chess-extension-${{ steps.semver.outputs.semantic-version }}.xpi/g" README.md
+          sed -i '0,/\("version" *: *\)"[^"]*"/s//\1"'"v${{ steps.semver.outputs.semantic-version }}"'"/' manifest.json
+          sed -E -i "s#(https://github.com/Ell1ott/chess-extension/releases/download/)[^/]*#\1v${{ steps.semver.outputs.semantic-version }}#g" README.md
+          sed -E -i "s/(chess-extension-v[^\"]*\.xpi)/chess-extension-v${{ steps.semver.outputs.semantic-version }}.xpi/g" README.md
 
       - name: Commit new version
         run: |
@@ -73,4 +72,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          pre-release: ${{ inputs.beta }}
           files: ${{ steps.web-ext-sign.outputs.target }}
