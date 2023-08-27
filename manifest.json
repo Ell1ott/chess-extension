@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "chess stats",
-  "version": "1.0",
+  "version": "v0.1.0",
   "description": "Adds extra statistics panel to chess.stjo.dev's bots",
   "permissions": ["activeTab", "storage"],
 
