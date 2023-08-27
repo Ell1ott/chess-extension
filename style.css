@@ -114,3 +114,8 @@
 .space-gap {
   gap: 5px;
 }
+
+.winner-text {
+  /* color: #ff8f00 !important; */
+  color: #cf7c32 !important;
+}

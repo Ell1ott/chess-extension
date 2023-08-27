@@ -38,6 +38,10 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
       "illegal move": 0,
       "Insufficient Material": 0,
     };
+
+    const nameElements = document.querySelectorAll(".name");
+
+    console.log(nameElements.length);
     games.forEach((game, index) => {
       var ending = 0;
       if (game.winner == "d") {
@@ -68,7 +72,12 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
         ending,
       ];
 
-      console.log(game.elo_change);
+      // console.log(game.elo_change);
+      if (game.winner != "d") {
+        nameElements[index * 2 + (game.winner == "w" ? 0 : 1)].classList.add(
+          "winner-text"
+        );
+      }
     });
 
     console.log(`${wins} wins ${losses} losses ${draws} draws`);
