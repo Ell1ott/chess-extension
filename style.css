@@ -119,3 +119,27 @@
   /* color: #ff8f00 !important; */
   color: #cf7c32 !important;
 }
+
+.color-bg.black {
+  background-color: rgb(48, 48, 48);
+}
+.color-bg.white {
+  background-color: rgb(255, 255, 255);
+}
+
+.color-bg {
+  border-radius: 5px;
+  padding: 2px;
+  padding-left: 7px;
+  padding-right: 7px;
+  font-size: 15px;
+}
+
+.name.black::after {
+  /* content: " ●"; Unicode character for a bullet point */
+  /* color: rgb(0, 0, 0); */
+}
+.name.white::after {
+  /* content: " ●"; Unicode character for a bullet point */
+  /* color: rgb(255, 255, 255); */
+}

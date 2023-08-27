@@ -45,6 +45,18 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     const nameElements = document.querySelectorAll(".name");
     const EloChangeElements = document.getElementsByClassName("elo");
 
+    chrome.storage.local.get(["colorBg"], function (result) {
+      console.log(result.colorBg);
+      if (result.colorBg) {
+        console.log(nameElements.length);
+
+        // Loop through the elements and apply the style
+        nameElements.forEach((element) => {
+          element.classList.add("color-bg"); // Add the 'highlight' class to apply the defined style
+        });
+      }
+    });
+
     console.log(EloChangeElements.length);
     games.forEach((game, index) => {
       var ending = 0;
