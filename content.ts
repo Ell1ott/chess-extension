@@ -32,11 +32,11 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     var drawEloEffect = 0;
 
     var endReasons = {
-      "Threefold Repetition": 0,
-      Checkmate: 0,
-      "timed out": 0,
-      "illegal move": 0,
-      "Insufficient Material": 0,
+      "Threefold Repetition": [0, 0, 0],
+      Checkmate: [0, 0, 0],
+      "timed out": [0, 0, 0],
+      "illegal move": [0, 0, 0],
+      "Insufficient Material": [0, 0, 0],
     };
     games.forEach((game, index) => {
       var ending = 0;
@@ -55,7 +55,10 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
 
       for (let reason in endReasons) {
         if (game.reason.toLowerCase().includes(reason.toLowerCase())) {
-          endReasons[reason] += 1;
+          endReasons[reason][0] += 1;
+
+          if (ending == 1) endReasons[reason][1] += 1;
+          if (ending == -1) endReasons[reason][2] += 1;
         }
       }
 
@@ -126,11 +129,35 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
   <button id="more-button">...</button>
   <div id="bgdarkener">
     <div id="stat-popup">
-      <div class="flex">
-        <h2>
+      <div id="end-reasons">
+        <h3>
         game ending reasons
-        </h2>
-        
+        </h3>
+        <div class="flex space-gap">
+          <p class="p bold">Checkmate</p>
+          <p class="p">${endReasons["Checkmate"][0]}</p>
+          <div class="spacer"></div>
+          <p class="p bold">Bot</p>
+          <p class="p">${endReasons["Checkmate"][1]}</p>
+        </div>
+        <div class="flex space-gap">
+          <p class="p bold">Threefold Repetition</p>
+          <p class="p">${endReasons["Threefold Repetition"][0]}</p>
+        </div>
+        <div class="flex space-gap">
+          <p class="p bold">Timed out</p>
+          <p class="p">${endReasons["timed out"][0]}</p>
+          <p class="p">${endReasons["Threefold Repetition"][0]}</p>
+
+        </div>
+        <div class="flex space-gap">
+          <p class="p bold">Illegal move</p>
+          <p class="p">${endReasons["illegal move"][0]}</p>
+        </div>
+        <div class="flex space-gap">
+          <p class="p bold">Insufficient Material</p>
+          <p class="p">${endReasons["Insufficient Material"][0]}</p>
+        </div>
 
       </div>
 

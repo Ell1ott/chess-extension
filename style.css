@@ -114,3 +114,24 @@
 .space-gap {
   gap: 5px;
 }
+
+.p {
+  margin: 2px;
+}
+
+#end-reasons {
+  margin-bottom: 10px;
+}
+
+.spacer {
+  margin-top: auto;
+  margin-bottom: auto;
+
+  margin-left: 10px;
+  margin-right: 10px;
+
+  height: 4px;
+  width: 4px;
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0.418);
+}
