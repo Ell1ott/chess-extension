@@ -35,11 +35,12 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     var drawEloEffect = 0;
 
     var endReasons = {
-      "Threefold Repetition": [0, 0, 0],
-      Checkmate: [0, 0, 0],
-      "timed out": [0, 0, 0],
-      "illegal move": [0, 0, 0],
-      "Insufficient Material": [0, 0, 0],
+      // [total, wins, losses, eloEffect]
+      "Threefold Repetition": [0, 0, 0, 0],
+      Checkmate: [0, 0, 0, 0],
+      "timed out": [0, 0, 0, 0],
+      "illegal move": [0, 0, 0, 0],
+      "Insufficient Material": [0, 0, 0, 0],
     };
 
     const nameElements = document.querySelectorAll(".name");
@@ -76,6 +77,7 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
       for (let reason in endReasons) {
         if (game.reason.toLowerCase().includes(reason.toLowerCase())) {
           endReasons[reason][0] += 1;
+          endReasons[reason][3] += game.elo_change;
 
           if (ending == 1) endReasons[reason][1] += 1;
           if (ending == -1) endReasons[reason][2] += 1;
@@ -178,6 +180,9 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
           <p class="p">+${endReasons["Checkmate"][1]}</p>
           <div class="spacer"></div>
           <p class="p">-${endReasons["Checkmate"][2]}</p>
+          <div class="spacer"></div>
+          <p class="p bold">elo:</p>          
+          <p class="p">${roundAndFormat(endReasons["Checkmate"][3])}</p>
         </div>
         <div class="flex space-gap">
         <p class="p bold">Timed out</p>
@@ -186,7 +191,9 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
         <p class="p">+${endReasons["timed out"][1]}</p>
         <div class="spacer"></div>
         <p class="p">-${endReasons["timed out"][2]}</p>
-
+        <div class="spacer"></div>
+        <p class="p bold">elo:</p>
+        <p class="p">${roundAndFormat(endReasons["timed out"][2])}</p>
         </div>
         <div class="flex space-gap">
           <p class="p bold">Illegal move</p>
@@ -195,14 +202,27 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
           <p class="p">+${endReasons["illegal move"][1]}</p>
           <div class="spacer"></div>
           <p class="p">-${endReasons["illegal move"][2]}</p>
+          <div class="spacer"></div>
+          <p class="p bold">elo:</p>
+          <p class="p">${roundAndFormat(endReasons["illegal move"][3])}</p>
         </div>
         <div class="flex space-gap">
           <p class="p bold">Insufficient Material</p>
           <p class="p">${endReasons["Insufficient Material"][0]}</p>
+          <div class="spacer"></div>
+          <p class="p bold">elo:</p>
+          <p class="p">${roundAndFormat(
+            endReasons["Insufficient Material"][3]
+          )}</p>
         </div>
         <div class="flex space-gap">
           <p class="p bold">Threefold Repetition</p>
           <p class="p">${endReasons["Threefold Repetition"][0]}</p>
+          <div class="spacer"></div>
+          <p class="p bold">elo:</p>
+          <p class="p">${roundAndFormat(
+            endReasons["Threefold Repetition"][3]
+          )}</p>
         </div>
       </div>
 
