@@ -175,39 +175,35 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
           <p class="p bold">Checkmate</p>
           <p class="p">${endReasons["Checkmate"][0]}</p>
           <div class="spacer"></div>
-          <p class="p bold">Won:</p>
-          <p class="p">${endReasons["Checkmate"][1]}</p>
+          <p class="p">+${endReasons["Checkmate"][1]}</p>
+          <div class="spacer"></div>
+          <p class="p">-${endReasons["Checkmate"][2]}</p>
         </div>
         <div class="flex space-gap">
-          <p class="p bold">Threefold Repetition</p>
-          <p class="p">${endReasons["Threefold Repetition"][0]}</p>
-          <div class="spacer"></div>
-          <p class="p bold">Won:</p>
-          <p class="p">${endReasons["Threefold Repetition"][1]}</p>
-        </div>
-        <div class="flex space-gap">
-          <p class="p bold">Timed out</p>
-          <p class="p">${endReasons["timed out"][0]}</p>
-          <div class="spacer"></div>
-          <p class="p bold">Won:</p>
-          <p class="p">${endReasons["timed out"][1]}</p>
+        <p class="p bold">Timed out</p>
+        <p class="p">${endReasons["timed out"][0]}</p>
+        <div class="spacer"></div>
+        <p class="p">+${endReasons["timed out"][1]}</p>
+        <div class="spacer"></div>
+        <p class="p">-${endReasons["timed out"][2]}</p>
 
         </div>
         <div class="flex space-gap">
           <p class="p bold">Illegal move</p>
           <p class="p">${endReasons["illegal move"][0]}</p>
           <div class="spacer"></div>
-          <p class="p bold">Won:</p>
-          <p class="p">${endReasons["illegal move"][1]}</p>
+          <p class="p">+${endReasons["illegal move"][1]}</p>
+          <div class="spacer"></div>
+          <p class="p">-${endReasons["illegal move"][2]}</p>
         </div>
         <div class="flex space-gap">
           <p class="p bold">Insufficient Material</p>
           <p class="p">${endReasons["Insufficient Material"][0]}</p>
-          <div class="spacer"></div>
-          <p class="p bold">Won:</p>
-          <p class="p">${endReasons["Insufficient Material"][1]}</p>
         </div>
-
+        <div class="flex space-gap">
+          <p class="p bold">Threefold Repetition</p>
+          <p class="p">${endReasons["Threefold Repetition"][0]}</p>
+        </div>
       </div>
 
       <button id="close-button">x</button>
