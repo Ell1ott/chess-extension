@@ -127,14 +127,15 @@
   margin-top: auto;
   margin-bottom: auto;
 
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 
   height: 4px;
   width: 4px;
   border-radius: 100px;
   background-color: rgba(0, 0, 0, 0.418);
 }
+
 .winner-text {
   /* color: #ff8f00 !important; */
   color: #cf7c32 !important;
