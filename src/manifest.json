@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "chess stats",
-  "version": "0.1.1",
+  "version": "v0.1.2",
   "description": "Adds extra statistics panel to chess.stjo.dev's bots",
   "browser_specific_settings": {
     "gecko": {
