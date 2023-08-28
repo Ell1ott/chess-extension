@@ -10,7 +10,7 @@ const green = [0, 255, 0];
 function roundAndFormat(number, decimal = 1) {
   const roundedNumber = round(number, decimal);
   const formattedNumber =
-    roundedNumber >= 0 ? `+${roundedNumber}` : `${roundedNumber}`;
+    number >= 0 ? `+${roundedNumber}` : `${roundedNumber}`;
   return formattedNumber;
 }
 
