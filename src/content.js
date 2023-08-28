@@ -4,6 +4,9 @@ console.log(url);
 
 console.log("chess.stjo.dev/api/bot/" + u + "/");
 
+const red = [255, 0, 0];
+const green = [0, 255, 0];
+
 function roundAndFormat(number, decimal = 1) {
   const roundedNumber = round(number, decimal);
   const formattedNumber =
@@ -38,6 +41,23 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
       "illegal move": [0, 0, 0],
       "Insufficient Material": [0, 0, 0],
     };
+
+    const nameElements = document.querySelectorAll(".name");
+    const EloChangeElements = document.getElementsByClassName("elo");
+
+    chrome.storage.local.get(["colorBg"], function (result) {
+      console.log(result.colorBg);
+      if (result.colorBg) {
+        console.log(nameElements.length);
+
+        // Loop through the elements and apply the style
+        nameElements.forEach((element) => {
+          element.classList.add("color-bg"); // Add the 'highlight' class to apply the defined style
+        });
+      }
+    });
+
+    console.log(EloChangeElements.length);
     games.forEach((game, index) => {
       var ending = 0;
       if (game.winner == "d") {
@@ -71,7 +91,25 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
         ending,
       ];
 
-      console.log(game.elo_change);
+      // console.log(game.elo_change);
+      if (game.winner != "d") {
+        nameElements[index * 2 + (game.winner == "w" ? 0 : 1)].classList.add(
+          "winner-text"
+        );
+      }
+      const eloColorFactor = Math.min(
+        Math.max(game.elo_change / 40 + 0.5, 0),
+        1
+      );
+      const eloColor = [
+        Math.round(red[0] * (1 - eloColorFactor) + green[0] * eloColorFactor), // R
+        Math.round(red[1] * (1 - eloColorFactor) + green[1] * eloColorFactor), // G
+        Math.round(red[2] * (1 - eloColorFactor) + green[2] * eloColorFactor), // B
+      ];
+
+      const eloColorString = `rgb(${eloColor[0]}, ${eloColor[1]}, ${eloColor[2]})`;
+
+      EloChangeElements[index].style.color = eloColorString;
     });
 
     console.log(`${wins} wins ${losses} losses ${draws} draws`);

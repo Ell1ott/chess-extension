@@ -1,0 +1,76 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to bump to'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+      beta:
+        type: boolean
+        description: 'Flag release as a pre release'
+
+jobs:
+  Build:
+    permissions:
+      contents: write
+    runs-on: ubuntu-22.04
+    outputs:
+      version: ${{ steps.semver.outputs.semantic-version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+          
+      - id: semver
+        name: Create new tag with semver
+        uses: SOLIDSoftworks/semver-tags@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          tag-prefix: 'v'
+          incremented-value: ${{ inputs.version }}
+
+      - name: Set version in manifest and readme
+        run: |
+          sed -i '0,/\("version" *: *\)"[^"]*"/s//\1"'"v${{ steps.semver.outputs.semantic-version }}"'"/' src/manifest.json
+          sed -E -i "s#(https://github.com/Ell1ott/chess-extension/releases/download/)[^/]*#\1v${{ steps.semver.outputs.semantic-version }}#g" README.md
+          sed -E -i "s/(chess-extension-v[^\"]*\.xpi)/chess-extension-v${{ steps.semver.outputs.semantic-version }}.xpi/g" README.md
+
+      - name: Commit new version
+        run: |
+          git config --global user.name "Jonathan Bangert"
+          git config --global user.email "jonathan@bangert.dk"
+    
+          git add -A
+          git commit -m "Update version to ${{ steps.semver.outputs.semantic-version }}"
+          git push
+
+      - name: Build
+        id: web-ext-build
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: build
+          source: src
+
+      - name: Sign
+        id: web-ext-sign
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: sign
+          source: ${{ steps.web-ext-build.outputs.target }}
+          channel: unlisted
+          apiKey: ${{ secrets.AMO_SIGN_KEY }}
+          apiSecret: ${{ secrets.AMO_SIGN_SECRET }}
+          timeout: 900000
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          pre-release: ${{ inputs.beta }}
+          files: ${{ steps.web-ext-sign.outputs.target }}
