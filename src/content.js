@@ -46,7 +46,7 @@ fetch("https://chess.stjo.dev/api/bot/" + u + "/")
     const nameElements = document.querySelectorAll(".name");
     const EloChangeElements = document.getElementsByClassName("elo");
 
-    chrome.storage.local.get(["colorBg"], function (result) {
+    chrome.storage?.local.get(["colorBg"], function (result) {
       console.log(result.colorBg);
       if (result.colorBg) {
         console.log(nameElements.length);
